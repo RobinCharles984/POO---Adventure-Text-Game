@@ -1,2 +1,2 @@
-# POO---Adventure-Text-Game
+# POO-Adventure-Text-Game
 Adventure text game made in Java
