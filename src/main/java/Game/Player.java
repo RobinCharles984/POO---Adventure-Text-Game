@@ -1,3 +1,8 @@
+package Game;
+
+import DAO.PlayerDAO;
+import Game.Boss;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,34 +13,33 @@ public class Player extends Thread{
     //Atributos
     Scanner myScanner = new Scanner(System.in);
     Scanner enterScanner = new Scanner(System.in);
-    int playerHP;
-    int maxHP;
-    String playerName;
-    String playerWeapon;
-    int choice;
-
-    int silverRing;
-    int oldPingent;
+    public int playerHP;
+    public int maxHP;
+    public String playerName;
+    public String playerWeapon;
+    public int choice;
+    public int silverRing;
+    public int oldPingent;
+    public int id;
 
     //Metodos
-    public void playerSetUp(Monster monster) {//Metodo a ser Chamado antes de Iniciar o jogo
-
-        playerHP = new Random().nextInt(10, 25);
-        maxHP = playerHP;
-
-        playerWeapon = "Adaga";
-
+    public void playerSetUp(Monster monster, Boolean cadastrado) {//Metodo a ser Chamado antes de Iniciar o jogo
         monster.monsterHP = new Random().nextInt(8, 13);
         boss.monsterHP = new Random().nextInt(25, 40);
 
-        System.out.println("Seu HP: " + playerHP);
-        System.out.println("Sua Arma: " + playerWeapon);
+        if(!cadastrado) {
+            playerHP = new Random().nextInt(10, 25);
+            maxHP = playerHP;
 
-        System.out.println("Digite o nome de seu Aventureiro(a):");
+            playerWeapon = "Adaga";
+            System.out.println("Seu HP: " + playerHP);
+            System.out.println("Sua Arma: " + playerWeapon);
 
-        playerName = myScanner.nextLine();
+            System.out.println("Digite o nome de seu Aventureiro(a):");
+            playerName = myScanner.nextLine();
 
-        System.out.println("Saudações " + playerName + ", vamos começar!");
+            System.out.println("Saudações " + playerName + ", vamos começar!");
+        }
     }
 
     public void fight(Places places, Monster monster) {
@@ -55,6 +59,7 @@ public class Player extends Thread{
         } else {
             fight(places, monster);
         }
+
     }
 
     public void fightBoss(Places places) {

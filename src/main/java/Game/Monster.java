@@ -1,3 +1,5 @@
+package Game;
+
 public class Monster {
     //Atributos
     int monsterHP;

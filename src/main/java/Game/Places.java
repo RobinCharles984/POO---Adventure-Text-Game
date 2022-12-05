@@ -1,7 +1,16 @@
+package Game;
+
+import DAO.PlayerDAO;
+
 public class Places {
+    PlayerDAO playerDAO;
+
+    public Places(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
+    }
+
     //Metodos
     public void townGate(Player player, Monster monster) {//Metodo que Inicia o Jogo
-
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("Você está no portão do vilarejo.");
         System.out.println("Um guarda está em sua frente.");
@@ -53,6 +62,9 @@ public class Places {
     }
 
     public void crossRoad(Player player, Monster monster) {
+
+        playerDAO.updatePlayer(player.id, player.playerWeapon, player.maxHP, player.playerHP, player.silverRing, player.oldPingent);
+
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("Você esta em um cruzamento. Ao Sul está o vilarejo.\n\n");
         System.out.println("1: Ir para o Norte");
